@@ -2,36 +2,50 @@
 <html>
 
 <head>
-	<title>Simple web page Template</title>
-	<link rel="stylesheet" href="homepage.css">
+    <title>Simple web page Template</title>
+    <link rel="stylesheet" href="homepage.css">
+    <script>
+        function redirectToCourses() {
+            var role = prompt('Are you a student or a teacher?\nEnter "student" or "teacher"');
+            if (role === 'student') {
+                window.location.href = 'courses.html'; // Redirect to courses.html with role=student
+            } else if (role === 'teacher') {
+                var password = prompt('Enter password:');
+                if (password === 'debugit') {
+                    window.location.href = 'courses.html?role=teacher'; // Redirect to courses.html with role=teacher
+                } else {
+                    alert('Incorrect password. Please try again.');
+                    window.location.href = 'homepage.html'; // Redirect to homepage
+                }
+            } else {
+                alert('Invalid role. Please enter "student" or "teacher".');
+            }
+        }
+    </script>
 </head>
 
 <body>
-	<nav class="navbar background">
-		<div class="logo">
-			<img src="Untitled.png"
-				style="height: 30px;"
-				alt="Logo">
-		</div>
-		<ul class="nav-list">
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="Untitled.png" style="height: 30px;" alt="Logo">
+        </div>
+        <ul class="nav-list">
             <li><a href="loginpage.html">Login</a></li>
-			<li><a href="#web">Web Technology</a></li>
-			<li><a href="#program">C Programming</a></li>
-			<li><a href="courses.html">Courses</a></li>
-		</ul>
-		<div class="rightnav">
-			<input type="text"
-				name="search"
-				id="search">
-			<button class="btn btn-sm">Search</button>
-		</div>
-	</nav>
+            <li><a href="#web">Web Technology</a></li>
+            <li><a href="doubts.html">Ask your Doubts</a></li>
+            <li><a href="#" onclick="redirectToCourses()">Courses</a></li>
+        </ul>
+        <div class="rightnav">
+            <input type="text" name="search" id="search">
+            <button class="btn btn-sm">Search</button>
+        </div>
+    </nav>
 
-	<footer class="background">
-		<p class="text-footer">
-			Let's Learn Together
-		</p>
-	</footer>
+    <footer class="background">
+        <p class="text-footer">
+            Let's Learn Together
+        </p>
+    </footer>
     <div class="circle1">Text 1</div>
     <div class="circle2">Text 2</div>
     <div class="circle3">Text 3</div>
@@ -40,7 +54,7 @@
         <img src="images2.jpeg" class="img1">
         <!-- Circular text boxes -->
         <div class="circle4">Text 4</div>
-      </div>
+    </div>
 </body>
 
 </html>
