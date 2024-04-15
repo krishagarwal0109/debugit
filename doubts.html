@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubt Page</title>
+    <link rel="stylesheet" href="doubts.css">
+</head>
+
+<body>
+    <h1>Doubt Page</h1>
+
+    <div id="addDoubtSection">
+        <label for="doubtContent">Enter Your Doubt:</label>
+        <input type="text" id="doubtContent" placeholder="Type your doubt here...">
+        <button onclick="addDoubt()">Add Doubt</button>
+    </div>
+
+    <div id="doubtsSection">
+        <h2>Unanswered Doubts</h2>
+        <ul id="doubtsList"></ul>
+    </div>
+
+    <div id="solvedDoubtsSection">
+        <h2>Solved Doubts</h2>
+        <ul id="solvedDoubtsList"></ul>
+    </div>
+
+    <script src="doubts.js"></script>
+</body>
+
+</html>

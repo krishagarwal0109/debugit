@@ -12,6 +12,84 @@ function addCourse() {
     }
 }
 
+function editCourse(courseName) {
+    var newPassword = prompt('Enter teacher password:');
+    if (newPassword === 'debugit') {
+        var newContent = prompt('Enter new content for the course:');
+        if (newContent !== null) {
+            var coursesContent = JSON.parse(localStorage.getItem('coursesContent')) || {};
+            coursesContent[courseName] = newContent;
+            localStorage.setItem('coursesContent', JSON.stringify(coursesContent));
+            displayCourses();
+            broadcastCourseUpdate(courseName);
+        }
+    } else {
+        alert('Incorrect password. Please try again.');
+    }
+}
+
+function addAssignment(courseName) {
+    var newPassword = prompt('Enter teacher password:');
+    if (newPassword === 'debugit') {
+        var newAssignment = prompt('Enter new assignment for the course:');
+        if (newAssignment !== null) {
+            var coursesAssignments = JSON.parse(localStorage.getItem('coursesAssignments')) || {};
+            coursesAssignments[courseName] = newAssignment;
+            localStorage.setItem('coursesAssignments', JSON.stringify(coursesAssignments));
+            displayCourses();
+            broadcastCourseUpdate(courseName);
+        }
+    } else {
+        alert('Incorrect password. Please try again.');
+    }
+}
+
+function addResources(courseName) {
+    var newPassword = prompt('Enter teacher password:');
+    if (newPassword === 'debugit') {
+        var newResource = prompt('Enter new resource for the course:');
+        if (newResource !== null) {
+            var coursesResources = JSON.parse(localStorage.getItem('coursesResources')) || {};
+            coursesResources[courseName] = newResource;
+            localStorage.setItem('coursesResources', JSON.stringify(coursesResources));
+            displayCourses();
+            broadcastCourseUpdate(courseName);
+        }
+    } else {
+        alert('Incorrect password. Please try again.');
+    }
+}
+
+function displayCourseContent(courseName) {
+    var coursesContent = JSON.parse(localStorage.getItem('coursesContent')) || {};
+    var content = coursesContent[courseName];
+    if (content) {
+        alert('Course Content:\n' + content);
+    } else {
+        alert('No content available for this course.');
+    }
+}
+
+function displayAssignment(courseName) {
+    var coursesAssignments = JSON.parse(localStorage.getItem('coursesAssignments')) || {};
+    var assignment = coursesAssignments[courseName];
+    if (assignment) {
+        alert('Assignment:\n' + assignment);
+    } else {
+        alert('No assignment available for this course.');
+    }
+}
+
+function displayResources(courseName) {
+    var coursesResources = JSON.parse(localStorage.getItem('coursesResources')) || {};
+    var resource = coursesResources[courseName];
+    if (resource) {
+        alert('Resources:\n' + resource);
+    } else {
+        alert('No resources available for this course.');
+    }
+}
+
 function enrollCourse(courseName) {
     var enrolledCourses = JSON.parse(localStorage.getItem('enrolledCourses')) || [];
     if (!enrolledCourses.includes(courseName)) {
@@ -65,24 +143,21 @@ function displayCourses() {
                 var editButton = document.createElement('button');
                 editButton.textContent = 'Edit';
                 editButton.onclick = function() {
-                    console.log('Edit course:', course);
-                    // Implement edit course functionality
+                    editCourse(course);
                 };
                 li.appendChild(editButton);
 
                 var addAssignmentButton = document.createElement('button');
                 addAssignmentButton.textContent = 'Add Assignment';
                 addAssignmentButton.onclick = function() {
-                    console.log('Add assignment for course:', course);
-                    // Implement add assignment functionality
+                    addAssignment(course);
                 };
                 li.appendChild(addAssignmentButton);
 
                 var addResourcesButton = document.createElement('button');
                 addResourcesButton.textContent = 'Add Resources';
                 addResourcesButton.onclick = function() {
-                    console.log('Add resources for course:', course);
-                    // Implement add resources functionality
+                    addResources(course);
                 };
                 li.appendChild(addResourcesButton);
 
@@ -112,6 +187,27 @@ function displayEnrolledCourses() {
                 unenrollCourse(course);
             };
             li.appendChild(unenrollButton);
+
+            var showCourseContentButton = document.createElement('button');
+            showCourseContentButton.textContent = 'Show Course Content';
+            showCourseContentButton.onclick = function() {
+                displayCourseContent(course);
+            };
+            li.appendChild(showCourseContentButton);
+
+            var showAssignmentButton = document.createElement('button');
+            showAssignmentButton.textContent = 'Show Assignment';
+            showAssignmentButton.onclick = function() {
+                displayAssignment(course);
+            };
+            li.appendChild(showAssignmentButton);
+
+            var showResourcesButton = document.createElement('button');
+            showResourcesButton.textContent = 'Show Resources';
+            showResourcesButton.onclick = function() {
+                displayResources(course);
+            };
+            li.appendChild(showResourcesButton);
         }
         enrolledCoursesList.appendChild(li);
     });
@@ -148,4 +244,3 @@ window.onload = function() {
         document.getElementById('addCourseSection').style.display = 'block';
     }
 };
-

@@ -22,6 +22,24 @@
             }
         }
     </script>
+        <script>
+            function redirectToDoubts() {
+                var role = prompt('Are you a student or a teacher?\nEnter "student" or "teacher"');
+                if (role === 'student') {
+                    window.location.href = 'doubts.html?role=student'; // Redirect to courses.html with role=student
+                } else if (role === 'teacher') {
+                    var password = prompt('Enter password:');
+                    if (password === 'debugit') {
+                        window.location.href = 'doubts.html?role=teacher'; // Redirect to courses.html with role=teacher
+                    } else {
+                        alert('Incorrect password. Please try again.');
+                        window.location.href = 'homepage.html'; // Redirect to homepage
+                    }
+                } else {
+                    alert('Invalid role. Please enter "student" or "teacher".');
+                }
+            }
+        </script>
 </head>
 
 <body>
@@ -31,8 +49,8 @@
         </div>
         <ul class="nav-list">
             <li><a href="loginpage.html">Login</a></li>
-            <li><a href="#web">Web Technology</a></li>
-            <li><a href="doubts.html">Ask your Doubts</a></li>
+            <li><a href="signup.html">Signup</a></li>
+            <li><a href="#" onclick="redirectToDoubts()">Ask Your Doubts</a></li>
             <li><a href="#" onclick="redirectToCourses()">Courses</a></li>
         </ul>
         <div class="rightnav">
