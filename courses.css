@@ -1,5 +1,9 @@
 body {
     font-family: Arial, sans-serif;
+    background-image: url('courses.jpeg'); /* Replace 'background-image.jpg' with the path to your image */
+    background-size: cover; /* This ensures the background image covers the entire viewport */
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed; /* Keeps the background image fixed when scrolling */
 }
 
 h1, h2 {
